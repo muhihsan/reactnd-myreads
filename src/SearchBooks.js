@@ -27,12 +27,9 @@ class SearchBooks extends Component {
     });
   }
 
-  updateBookShelf(book, shelf) {
-    BooksAPI.update(book, shelf);
-  }
-
   render() {
     const { books, searchValue } = this.state;
+    const { myBooks, onUpdateBookshelf } = this.props;
 
     return (
       <div className="search-books">
@@ -45,7 +42,7 @@ class SearchBooks extends Component {
             <input type="text" value={searchValue} onChange={this.handleChange} placeholder="Search by title or author" />
           </div>
         </div>
-        <SearchBooksResults books={books} onUpdateBookshelf={this.updateBookShelf} />
+        <SearchBooksResults books={books} onUpdateBookshelf={onUpdateBookshelf} />
       </div>
     );
   }

@@ -4,12 +4,14 @@ import ListBookContent from './ListBookContent';
 
 class ListBooks extends Component {
   render() {
+    const { books, onUpdateBookshelf } = this.props;
+
     return (
       <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
         </div>
-        <ListBookContent />
+        <ListBookContent books={books} onUpdateBookshelf={onUpdateBookshelf} />
         <div className="open-search">
           <Link
             to='/search'
