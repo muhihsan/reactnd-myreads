@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as BooksAPI from './utils/BooksAPI';
 import SearchBooksResults from './SearchBooksResults';
 
@@ -8,6 +9,11 @@ class SearchBooks extends Component {
     super (props);
 
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  static propTypes = {
+    myBooks: PropTypes.array.isRequired,
+    onUpdateBookshelf: PropTypes.func.isRequired
   }
 
   state = {
