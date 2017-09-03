@@ -36,6 +36,13 @@ class SearchBooks extends Component {
     const { books, searchValue } = this.state;
     const { myBooks, onUpdateBookshelf } = this.props;
 
+    myBooks.forEach((myBook) => {
+      var book = books.find((book) => book.id === myBook.id);
+      if (book) {
+        book.shelf = myBook.shelf;
+      }
+    });
+
     return (
       <div className="search-books">
         <div className="search-books-bar">
