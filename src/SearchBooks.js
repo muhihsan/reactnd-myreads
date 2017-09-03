@@ -16,7 +16,7 @@ class SearchBooks extends Component {
   }
 
   handleChange(event) {
-    this.setState({ searchValue: event.target.value.trim() }, this.searchBooks);
+    this.setState({ searchValue: event.target.value }, this.searchBooks);
   }
 
   searchBooks = () => {
