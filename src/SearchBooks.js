@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import SearchBooksResults from './SearchBooksResults';
 
 class SearchBooks extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class SearchBooks extends Component {
 
   handleChange(event) {
     this.setState({searchValue: event.target.value.trim()});
+    debugger;
   }
 
   render() {
@@ -38,10 +40,7 @@ class SearchBooks extends Component {
             <input type="text" value={searchValue} onChange={this.handleChange} placeholder="Search by title or author" />
           </div>
         </div>
-        <div className="search-books-results">
-          <ol className="books-grid">
-          </ol>
-        </div>
+        <SearchBooksResults />
       </div>
     );
   }
