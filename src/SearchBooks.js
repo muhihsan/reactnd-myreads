@@ -20,11 +20,16 @@ class SearchBooks extends Component {
   }
 
   searchBooks = () => {
-    BooksAPI.search(this.state.searchValue, 20).then((result) => {
-      if (result && !result.error) {
-        this.setState({ books: result });
-      }
-    });
+    if (this.state.searchValue === '') {
+      this.setState({ books: [] });
+    }
+    else {
+      BooksAPI.search(this.state.searchValue, 20).then((result) => {
+        if (result && !result.error) {
+          this.setState({ books: result });
+        }
+      });
+    }
   }
 
   render() {
