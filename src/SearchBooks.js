@@ -21,7 +21,7 @@ class SearchBooks extends Component {
 
   searchBooks = () => {
     BooksAPI.search(this.state.searchValue, 20).then((result) => {
-      if (!result.error) {
+      if (result && !result.error) {
         this.setState({ books: result });
       }
     });
