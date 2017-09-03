@@ -9,7 +9,7 @@ class ListBookContent extends Component {
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 
-  render() {
+  render = () => {
     const { books, onUpdateBookshelf } = this.props;
     const currentlyReadingBooks = books.filter((book) => book.shelf === Constants.CURRENTLY_READING);
     const wantToReadBooks = books.filter((book) => book.shelf === Constants.WANT_TO_READ);

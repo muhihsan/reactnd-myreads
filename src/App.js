@@ -8,7 +8,6 @@ import './App.css';
 class BooksApp extends React.Component {
   constructor(props) {
     super(props);
-
     this.updateBookshelf = this.updateBookshelf.bind(this);
   }
 
@@ -16,23 +15,23 @@ class BooksApp extends React.Component {
     books: []
   }
 
-  getAllBooks() {
+  getAllBooks = () => {
     BooksAPI.getAll().then((books) => {
       this.setState({ books: books });
     });
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.getAllBooks();
   }
 
-  updateBookshelf(book, shelf) {
+  updateBookshelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() =>
       this.getAllBooks()
     );
   }
 
-  render() {
+  render = () => {
     const { books } = this.state;
 
     return (

@@ -7,7 +7,6 @@ import SearchBooksResults from './SearchBooksResults';
 class SearchBooks extends Component {
   constructor(props) {
     super (props);
-
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -21,7 +20,7 @@ class SearchBooks extends Component {
     searchValue: ''
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     this.setState({ searchValue: event.target.value }, this.searchBooks);
   }
 
@@ -38,7 +37,7 @@ class SearchBooks extends Component {
     }
   }
 
-  render() {
+  render = () => {
     const { books, searchValue } = this.state;
     const { myBooks, onUpdateBookshelf } = this.props;
 

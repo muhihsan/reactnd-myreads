@@ -5,7 +5,6 @@ import * as Constants from './utils/Constants';
 class BookshelfChanger extends Component {
   constructor(props) {
     super(props);
-
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -14,11 +13,11 @@ class BookshelfChanger extends Component {
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     this.props.onUpdateBookshelf(this.props.book, event.target.value);
   }
 
-  render() {
+  render = () => {
     const { book } = this.props;
     const shelf = book.shelf ? book.shelf : Constants.NONE;
 

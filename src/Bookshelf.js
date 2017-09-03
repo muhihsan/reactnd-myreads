@@ -9,7 +9,7 @@ class Bookshelf extends Component {
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 
-  render() {
+  render = () => {
     const { title, books, onUpdateBookshelf } = this.props;
 
     return (
