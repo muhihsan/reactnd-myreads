@@ -25,6 +25,10 @@ class SearchBooks extends Component {
     });
   }
 
+  updateBookShelf(book, shelf) {
+    BooksAPI.update(book, shelf);
+  }
+
   render() {
     const { books, searchValue } = this.state;
 
@@ -36,18 +40,10 @@ class SearchBooks extends Component {
             to='/'
           >Close</Link>
           <div className="search-books-input-wrapper">
-            {/*
-              NOTES: The search from BooksAPI is limited to a particular set of search terms.
-              You can find these search terms here:
-              https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-
-              However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-              you don't find a specific author or title. Every search is limited by search terms.
-            */}
             <input type="text" value={searchValue} onChange={this.handleChange} placeholder="Search by title or author" />
           </div>
         </div>
-        <SearchBooksResults books={books} />
+        <SearchBooksResults books={books} onUpdateBookshelf={this.updateBookShelf} />
       </div>
     );
   }

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import Books from './Books';
 
 class SearchBooksResults extends Component {
   render() {
-    const { books } = this.props;
+    const { books, onUpdateBookshelf } = this.props;
 
     return (
       <div className="search-books-results">
-        <ol className="books-grid">
-        </ol>
+        <Books books={books} onUpdateBookshelf={onUpdateBookshelf} />
       </div>
     );
   }
