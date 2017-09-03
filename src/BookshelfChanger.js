@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import * as Constants from './utils/Constants';
 
 class BookshelfChanger extends Component {
@@ -6,6 +7,11 @@ class BookshelfChanger extends Component {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  static propTypes = {
+    book: PropTypes.object.isRequired,
+    onUpdateBookshelf: PropTypes.func.isRequired
   }
 
   handleChange(event) {
