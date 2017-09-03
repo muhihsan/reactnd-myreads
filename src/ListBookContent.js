@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import * as Constants from './utils/Constants';
 import Bookshelf from './Bookshelf';
 
 class ListBookContent extends Component {
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+    onUpdateBookshelf: PropTypes.func.isRequired
+  }
+
   render() {
     const { books, onUpdateBookshelf } = this.props;
     const currentlyReadingBooks = books.filter((book) => book.shelf === Constants.CURRENTLY_READING);
