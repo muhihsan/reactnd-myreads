@@ -7,7 +7,7 @@ class ListBookContent extends Component {
   constructor(props) {
     super(props);
 
-    this.updateBookShelf = this.updateBookShelf.bind(this);
+    this.updateBookshelf = this.updateBookshelf.bind(this);
   }
 
   state = {
@@ -30,7 +30,7 @@ class ListBookContent extends Component {
     this.getAllBooks();
   }
 
-  updateBookShelf(book, shelf) {
+  updateBookshelf(book, shelf) {
     BooksAPI.update(book, shelf).then(() =>
       this.getAllBooks()
     );
@@ -42,9 +42,9 @@ class ListBookContent extends Component {
     return (
       <div className="list-books-content">
         <div>
-          <Bookshelf key={Constants.CURRENTLY_READING} title={'Currently Reading'} books={currentlyReadingBooks} onUpdateBookShelf={this.updateBookShelf} />
-          <Bookshelf key={Constants.WANT_TO_READ} title={'Want to Read'} books={wantToReadBooks} onUpdateBookShelf={this.updateBookShelf} />
-          <Bookshelf key={Constants.READ} title={'Read'} books={readBooks} onUpdateBookShelf={this.updateBookShelf} />
+          <Bookshelf key={Constants.CURRENTLY_READING} title={'Currently Reading'} books={currentlyReadingBooks} onUpdateBookshelf={this.updateBookshelf} />
+          <Bookshelf key={Constants.WANT_TO_READ} title={'Want to Read'} books={wantToReadBooks} onUpdateBookshelf={this.updateBookshelf} />
+          <Bookshelf key={Constants.READ} title={'Read'} books={readBooks} onUpdateBookshelf={this.updateBookshelf} />
         </div>
       </div>
     );

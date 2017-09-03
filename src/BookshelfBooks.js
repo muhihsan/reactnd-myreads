@@ -3,11 +3,11 @@ import Books from './Books';
 
 class BookshelfBooks extends Component {
   render() {
-    const { books, onUpdateBookShelf } = this.props;
+    const { books, onUpdateBookshelf } = this.props;
 
     return (
       <div className="bookshelf-books">
-        <Books books={books} onUpdateBookShelf={onUpdateBookShelf} />
+        <Books books={books} onUpdateBookshelf={onUpdateBookshelf} />
       </div>
     );
   }

@@ -9,7 +9,8 @@ class BookshelfChanger extends Component {
   }
 
   handleChange(event) {
-    this.props.onUpdateBookShelf(this.props.book, event.target.value);
+    debugger;
+    this.props.onUpdateBookshelf(this.props.book, event.target.value);
   }
 
   render() {
