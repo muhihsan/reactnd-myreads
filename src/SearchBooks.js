@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import * as BooksAPI from './utils/BooksAPI';
 import SearchBooksResults from './SearchBooksResults';
 
 class SearchBooks extends Component {
@@ -10,16 +11,22 @@ class SearchBooks extends Component {
   }
 
   state = {
+    books: [],
     searchValue: ''
   }
 
   handleChange(event) {
-    this.setState({searchValue: event.target.value.trim()});
-    debugger;
+    this.setState({ searchValue: event.target.value.trim() }, this.searchBooks);
+  }
+
+  searchBooks = () => {
+    BooksAPI.search(this.state.searchValue, 20).then((books) => {
+      this.setState({ books: books });
+    });
   }
 
   render() {
-    const { searchValue } = this.state;
+    const { books, searchValue } = this.state;
 
     return (
       <div className="search-books">
@@ -40,7 +47,7 @@ class SearchBooks extends Component {
             <input type="text" value={searchValue} onChange={this.handleChange} placeholder="Search by title or author" />
           </div>
         </div>
-        <SearchBooksResults />
+        <SearchBooksResults books={books} />
       </div>
     );
   }
