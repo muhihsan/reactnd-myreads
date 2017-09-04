@@ -173,9 +173,9 @@ body, .app {
 }
 
 .done {
-  background: #406CDC;
-  background-image: url('./icons/add.svg');
-  background-size: 40px;
+  background: #ffffff;
+  background-image: url('./icons/success.png');
+  background-size: 20px;
   background-repeat: no-repeat;
   background-position: center;
 }

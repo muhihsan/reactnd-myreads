@@ -42,7 +42,7 @@ class BookshelfChanger extends Component {
 
     return (
       <div className={`book-shelf-changer ${(!isUpdatingShelf && !isUpdateCompleted) ? 'changer' : (isUpdatingShelf && !isUpdateCompleted) ? 'loading' : 'done' }`}>
-        {!isUpdatingShelf && (
+        {!isUpdatingShelf && !isUpdateCompleted && (
           <select value={shelf} onChange={this.handleChange}>
             <option disabled>Move to...</option>
             <option value={Constants.CURRENTLY_READING}>Currently Reading</option>
