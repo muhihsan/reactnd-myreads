@@ -18,7 +18,6 @@ class BookshelfChanger extends Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
-    debugger;
     this.setState({ isChangingShelf: nextProps.book.shelf && (nextProps.book.shelf !== this.props.book.shelf) });
   }
 

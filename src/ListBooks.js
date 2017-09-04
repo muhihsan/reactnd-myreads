@@ -19,7 +19,7 @@ class ListBooks extends Component {
         </div>
         <ListBookContent books={books} onUpdateBookshelf={onUpdateBookshelf} />
         <div className="open-search">
-          <Link to='/search'>Add a book</Link>
+          <Link to="/search">Add a book</Link>
         </div>
       </div>
     );
