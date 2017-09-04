@@ -20,7 +20,7 @@ class BookshelfChanger extends Component {
 
   componentWillReceiveProps = (nextProps) => {
     if (nextProps.book.shelf && (nextProps.book.shelf !== this.props.book.shelf)) {
-      this.setState({ isUpdateCompleted: true })
+      this.setState({ isUpdateCompleted: true });
       setTimeout(() => {
         this.setState({
           isUpdatingShelf: false,
@@ -28,6 +28,10 @@ class BookshelfChanger extends Component {
         });
       }, 1500);
     }
+  }
+
+  componentWillUnmount = () => {
+    this.setState({ isUpdateCompleted: true });
   }
 
   handleChange = (event) => {
