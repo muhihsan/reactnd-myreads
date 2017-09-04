@@ -172,6 +172,14 @@ body, .app {
   background-position: center;
 }
 
+.done {
+  background: #406CDC;
+  background-image: url('./icons/add.svg');
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 /* book cover */
 
 .book-cover {

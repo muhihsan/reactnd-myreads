@@ -9,7 +9,8 @@ class BookshelfChanger extends Component {
   }
 
   state = {
-    isChangingShelf: false
+    isUpdatingShelf: false,
+    isUpdateCompleted: false
   }
 
   static propTypes = {
@@ -18,22 +19,30 @@ class BookshelfChanger extends Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
-    this.setState({ isChangingShelf: nextProps.book.shelf && (nextProps.book.shelf !== this.props.book.shelf) });
+    if (nextProps.book.shelf && (nextProps.book.shelf !== this.props.book.shelf)) {
+      this.setState({ isUpdateCompleted: true })
+      setTimeout(() => {
+        this.setState({
+          isUpdatingShelf: false,
+          isUpdateCompleted: false
+        });
+      }, 1500);
+    }
   }
 
   handleChange = (event) => {
-    this.setState({ isChangingShelf: true });
+    this.setState({ isUpdatingShelf: true });
     this.props.onUpdateBookshelf(this.props.book, event.target.value);
   }
 
   render = () => {
-    const { isChangingShelf } = this.state;
+    const { isUpdatingShelf, isUpdateCompleted } = this.state;
     const { book } = this.props;
     const shelf = book.shelf ? book.shelf : Constants.NONE;
 
     return (
-      <div className={`book-shelf-changer ${isChangingShelf ? 'loading' : 'changer'}`}>
-        {!isChangingShelf && (
+      <div className={`book-shelf-changer ${(!isUpdatingShelf && !isUpdateCompleted) ? 'changer' : (isUpdatingShelf && !isUpdateCompleted) ? 'loading' : 'done' }`}>
+        {!isUpdatingShelf && (
           <select value={shelf} onChange={this.handleChange}>
             <option disabled>Move to...</option>
             <option value={Constants.CURRENTLY_READING}>Currently Reading</option>

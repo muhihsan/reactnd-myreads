@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import * as Constants from './utils/Constants';
 import SearchBooksBar from './SearchBooksBar';
 import SearchBooksResults from './SearchBooksResults';
 
@@ -10,21 +11,25 @@ class SearchBooks extends Component {
   }
 
   state = {
-    books: []
+    searchedBooks: []
   }
 
   setBooks = (books) => {
-    this.setState({ books: books });
+    this.setState({ searchedBooks: books });
   }
 
   render = () => {
-    const { books } = this.state;
+    const { searchedBooks } = this.state;
     const { myBooks, onUpdateBookshelf } = this.props;
 
-    myBooks.forEach((myBook) => {
-      var book = books.find((book) => book.id === myBook.id);
-      if (book) {
-        book.shelf = myBook.shelf;
+    const books = searchedBooks.map((book) => {
+      const myBook = myBooks.find((myBook) => myBook.id === book.id);
+      return {
+        id: book.id,
+        title: book.title,
+        authors: book.authors,
+        imageLinks: book.imageLinks,
+        shelf: myBook ? myBook.shelf : Constants.NONE
       }
     });
 
