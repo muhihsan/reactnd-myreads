@@ -19,14 +19,12 @@ class SearchBooksBar extends Component {
   }
 
   handleChange = (event) => {
-    const self = this;
-
-    if (self.state.typingTimeOut)
-      clearTimeout(self.state.typingTimeOut);
+    if (this.state.typingTimeOut)
+      clearTimeout(this.state.typingTimeOut);
 
     this.setState({
       searchValue: event.target.value,
-      typingTimeOut: setTimeout(() => self.searchBooks(), 1500)
+      typingTimeOut: setTimeout(() => this.searchBooks(), 1500)
     });
   }
 
