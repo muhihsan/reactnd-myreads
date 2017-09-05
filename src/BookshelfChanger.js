@@ -26,7 +26,7 @@ class BookshelfChanger extends Component {
           isUpdatingShelf: false,
           isUpdateCompleted: false
         });
-      }, 1500);
+      }, 1000);
     }
   }
 
