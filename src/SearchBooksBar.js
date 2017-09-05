@@ -14,14 +14,24 @@ class SearchBooksBar extends Component {
   }
 
   state = {
-    searchValue: ''
+    searchValue: '',
+    typingTimeOut: 0
   }
 
   handleChange = (event) => {
-    this.setState({ searchValue: event.target.value }, this.searchBooks);
+    const self = this;
+
+    if (self.state.typingTimeOut)
+      clearTimeout(self.state.typingTimeOut);
+
+    this.setState({
+      searchValue: event.target.value,
+      typingTimeOut: setTimeout(() => self.searchBooks(), 1500)
+    });
   }
 
   searchBooks = () => {
+    console.log('Start searching');
     if (this.state.searchValue === '') {
       this.props.onSearchBooks([])
     }
