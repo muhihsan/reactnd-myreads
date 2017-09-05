@@ -11,15 +11,19 @@ class SearchBooks extends Component {
   }
 
   state = {
-    searchedBooks: []
+    searchedBooks: [],
+    currentSearchValue: ''
   }
 
-  setBooks = (books) => {
-    this.setState({ searchedBooks: books });
+  setBooksAndSearchValue = (searchedBooks, currentSearchValue = '') => {
+    this.setState({
+      searchedBooks: searchedBooks,
+      currentSearchValue: currentSearchValue
+    });
   }
 
   render = () => {
-    const { searchedBooks } = this.state;
+    const { currentSearchValue, searchedBooks } = this.state;
     const { myBooks, onUpdateBookshelf } = this.props;
 
     const books = searchedBooks.map((book) => {
@@ -35,8 +39,8 @@ class SearchBooks extends Component {
 
     return (
       <div className="search-books">
-        <SearchBooksBar onSearchBooks={this.setBooks} />
-        <SearchBooksResults books={books} onUpdateBookshelf={onUpdateBookshelf} />
+        <SearchBooksBar onSearchBooks={this.setBooksAndSearchValue} />
+        <SearchBooksResults currentSearchValue={currentSearchValue} books={books} onUpdateBookshelf={onUpdateBookshelf} />
       </div>
     );
   }

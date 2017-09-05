@@ -5,15 +5,21 @@ import Books from './Books';
 class SearchBooksResults extends Component {
   static propTypes = {
     books: PropTypes.array.isRequired,
-    onUpdateBookshelf: PropTypes.func.isRequired
+    onUpdateBookshelf: PropTypes.func.isRequired,
+    currentSearchValue: PropTypes.string.isRequired
   }
 
   render = () => {
-    const { books, onUpdateBookshelf } = this.props;
+    const { books, onUpdateBookshelf, currentSearchValue } = this.props;
 
     return (
       <div className="search-books-results">
-        <Books books={books} onUpdateBookshelf={onUpdateBookshelf} />
+        {books && books.length > 0 && (
+          <Books books={books} onUpdateBookshelf={onUpdateBookshelf} />
+        )}
+        {currentSearchValue !== '' && books && books.length === 0 && (
+          <div className="center">No books found with title or author <span className="highlight">{currentSearchValue}</span></div>
+        )}
       </div>
     );
   }

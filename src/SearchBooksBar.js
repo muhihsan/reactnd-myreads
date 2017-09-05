@@ -29,12 +29,12 @@ class SearchBooksBar extends Component {
   }
 
   searchBooks = () => {
-    if (this.state.searchValue === '') {
+    if (this.state.searchValue.trim() === '') {
       this.props.onSearchBooks([])
     }
     else {
       BooksAPI.search(this.state.searchValue, 20).then((result) =>
-        this.props.onSearchBooks((result && !result.error) ? result : [])
+        this.props.onSearchBooks((result && !result.error) ? result : [], this.state.searchValue)
       );
     }
   }
