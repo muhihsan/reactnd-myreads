@@ -10,14 +10,12 @@ class ListBooks extends Component {
   }
 
   render = () => {
-    const { books, onUpdateBookshelf } = this.props;
-
     return (
       <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
         </div>
-        <ListBookContent books={books} onUpdateBookshelf={onUpdateBookshelf} />
+        <ListBookContent {...(this.props)} />
         <div className="open-search">
           <Link to="/search">Add a book</Link>
         </div>

@@ -9,11 +9,9 @@ class BookshelfBooks extends Component {
   }
 
   render = () => {
-    const { books, onUpdateBookshelf } = this.props;
-
     return (
       <div className="bookshelf-books">
-        <Books books={books} onUpdateBookshelf={onUpdateBookshelf} />
+        <Books {...(this.props)} />
       </div>
     );
   }
