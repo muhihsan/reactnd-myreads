@@ -29,16 +29,13 @@ class SearchBooksBar extends Component {
   }
 
   searchBooks = () => {
-    console.log('Start searching');
     if (this.state.searchValue === '') {
       this.props.onSearchBooks([])
     }
     else {
-      BooksAPI.search(this.state.searchValue, 20).then((result) => {
-        if (result && !result.error) {
-          this.props.onSearchBooks(result);
-        }
-      });
+      BooksAPI.search(this.state.searchValue, 20).then((result) =>
+        this.props.onSearchBooks((result && !result.error) ? result : [])
+      );
     }
   }
 
