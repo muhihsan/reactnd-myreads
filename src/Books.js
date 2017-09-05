@@ -4,7 +4,12 @@ import Book from './Book';
 
 class Books extends Component {
   static propTypes = {
-    books: PropTypes.array.isRequired,
+    books: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      authors: PropTypes.array,
+      imageLinks: PropTypes.object
+    })).isRequired,
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 

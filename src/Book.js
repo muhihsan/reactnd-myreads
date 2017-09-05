@@ -4,7 +4,12 @@ import BookshelfChanger from './BookshelfChanger'
 
 class Book extends Component {
   static propTypes = {
-    book: PropTypes.object.isRequired,
+    book: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      authors: PropTypes.array,
+      imageLinks: PropTypes.object
+    }).isRequired,
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 
