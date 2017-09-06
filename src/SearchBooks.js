@@ -6,7 +6,6 @@ import SearchBooksResults from './SearchBooksResults';
 
 /** Class representing SearchBooks comopnent. */
 class SearchBooks extends Component {
-
   /**  */
   static propTypes = {
     myBooks: PropTypes.array.isRequired,
@@ -21,8 +20,8 @@ class SearchBooks extends Component {
 
   /**
    *
-   * @param {*} searchedBooks - The searchBooks value.
-   * @param {*} currentSearchValue - The currentSearchValue value.
+   * @param {Object[]} searchedBooks - The searchBooks value.
+   * @param {string} currentSearchValue - The currentSearchValue value.
    */
   setBooksAndSearchValue = (searchedBooks, currentSearchValue = '') => {
     this.setState({

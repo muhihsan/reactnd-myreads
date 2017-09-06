@@ -4,7 +4,6 @@ import Books from './Books';
 
 /** Class representing BookshelfBooks component. */
 class BookshelfBooks extends Component {
-
   /**  */
   static propTypes = {
     books: PropTypes.array.isRequired,

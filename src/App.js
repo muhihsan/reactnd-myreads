@@ -37,8 +37,8 @@ class BooksApp extends React.Component {
 
   /**
    *
-   * @param {*} book - The book value.
-   * @param {*} shelf -  The shelf value.
+   * @param {object} book - The book value.
+   * @param {string} shelf -  The shelf value.
    */
   updateBookshelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() =>

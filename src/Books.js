@@ -4,7 +4,6 @@ import Book from './Book';
 
 /** Class representing Books component. */
 class Books extends Component {
-
   /**  */
   static propTypes = {
     books: PropTypes.arrayOf(PropTypes.shape({

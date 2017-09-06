@@ -4,20 +4,15 @@ import * as Constants from './utils/Constants';
 
 /** Class representing BookshelfChanger component. */
 class BookshelfChanger extends Component {
-
   /**
    *
-   * @param {*} props - The props value.
+   * @param {object} props - The props value.
+   * @param {object} props.book - The book value.
+   * @param {*} props.onUpdateBookshelf - The onUpdateBookshelf function.
    */
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-  }
-
-  /**  */
-  state = {
-    isUpdatingShelf: false,
-    isUpdateCompleted: false
   }
 
   /**  */
@@ -26,10 +21,18 @@ class BookshelfChanger extends Component {
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 
+  /**  */
+  state = {
+    isUpdatingShelf: false,
+    isUpdateCompleted: false
+  }
+
   /**
    *
-   * @param {*} nextProps - The nextProps value.
-  */
+   * @param {object} nextProps - The nextProps value.
+   * @param {object} nextProps.book - The book value.
+   * @param {*} nextProps.onUpdateBookshelf - The onUpdateBookshelf function.
+   */
   componentWillReceiveProps = (nextProps) => {
     if (nextProps.book.shelf && (nextProps.book.shelf !== this.props.book.shelf)) {
       this.setState({ isUpdateCompleted: true });
@@ -49,7 +52,9 @@ class BookshelfChanger extends Component {
 
   /**
    *
-   * @param {*} event - The event value.
+   * @param {object} event - The event value.
+   * @param {object} event.target - The target value.
+   * @param {string} event.target.value - The value value.
   */
   handleChange = (event) => {
     this.setState({ isUpdatingShelf: true });

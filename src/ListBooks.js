@@ -5,7 +5,6 @@ import ListBookContent from './ListBookContent';
 
 /** Class representing ListBooks component. */
 class ListBooks extends Component {
-
   /**  */
   static propTypes = {
     books: PropTypes.array.isRequired,

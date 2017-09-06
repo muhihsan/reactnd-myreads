@@ -7,7 +7,8 @@ import * as BooksAPI from './utils/BooksAPI';
 class SearchBooksBar extends Component {
   /**
    *
-   * @param {*} props - This props value.
+   * @param {object} props - This props value.
+   * @param {*} props.onSearchBooks - This onSearchBooks value.
    */
   constructor(props) {
     super (props);
@@ -26,7 +27,9 @@ class SearchBooksBar extends Component {
   }
 
   /**
-   * @param {*} event - This event value.
+   * @param {object} event - This event value.
+   * @param {object} event.target - This target value.
+   * @param {string} event.target.value - This value vale.
    */
   handleChange = (event) => {
     if (this.state.typingTimeOut)
