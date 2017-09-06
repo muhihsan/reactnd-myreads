@@ -4,17 +4,26 @@ import * as Constants from './utils/Constants';
 import SearchBooksBar from './SearchBooksBar';
 import SearchBooksResults from './SearchBooksResults';
 
+/** Class representing SearchBooks comopnent. */
 class SearchBooks extends Component {
+
+  /**  */
   static propTypes = {
     myBooks: PropTypes.array.isRequired,
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 
+  /**  */
   state = {
     searchedBooks: [],
     currentSearchValue: ''
   }
 
+  /**
+   *
+   * @param {*} searchedBooks - The searchBooks value.
+   * @param {*} currentSearchValue - The currentSearchValue value.
+   */
   setBooksAndSearchValue = (searchedBooks, currentSearchValue = '') => {
     this.setState({
       searchedBooks: searchedBooks,
@@ -22,6 +31,7 @@ class SearchBooks extends Component {
     });
   }
 
+  /**  */
   render = () => {
     const { currentSearchValue, searchedBooks } = this.state;
     const { myBooks, onUpdateBookshelf } = this.props;
@@ -46,4 +56,5 @@ class SearchBooks extends Component {
   }
 }
 
+/**  */
 export default SearchBooks;

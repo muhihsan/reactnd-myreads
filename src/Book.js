@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BookshelfChanger from './BookshelfChanger'
 
+/** Class representing a Book component. */
 class Book extends Component {
+
+  /**  */
   static propTypes = {
     book: PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -13,6 +16,7 @@ class Book extends Component {
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 
+  /**  */
   render = () => {
     const { book } = this.props;
 
@@ -31,4 +35,5 @@ class Book extends Component {
   }
 }
 
+/**  */
 export default Book;

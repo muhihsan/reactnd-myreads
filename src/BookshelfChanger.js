@@ -2,22 +2,34 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as Constants from './utils/Constants';
 
+/** Class representing BookshelfChanger component. */
 class BookshelfChanger extends Component {
+
+  /**
+   *
+   * @param {*} props - The props value.
+   */
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
   }
 
+  /**  */
   state = {
     isUpdatingShelf: false,
     isUpdateCompleted: false
   }
 
+  /**  */
   static propTypes = {
     book: PropTypes.object.isRequired,
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 
+  /**
+   *
+   * @param {*} nextProps - The nextProps value.
+  */
   componentWillReceiveProps = (nextProps) => {
     if (nextProps.book.shelf && (nextProps.book.shelf !== this.props.book.shelf)) {
       this.setState({ isUpdateCompleted: true });
@@ -30,15 +42,21 @@ class BookshelfChanger extends Component {
     }
   }
 
+  /**  */
   componentWillUnmount = () => {
     this.setState({ isUpdateCompleted: true });
   }
 
+  /**
+   *
+   * @param {*} event - The event value.
+  */
   handleChange = (event) => {
     this.setState({ isUpdatingShelf: true });
     this.props.onUpdateBookshelf(this.props.book, event.target.value);
   }
 
+  /**  */
   render = () => {
     const { isUpdatingShelf, isUpdateCompleted } = this.state;
     const { book } = this.props;
@@ -60,4 +78,5 @@ class BookshelfChanger extends Component {
   }
 }
 
+/**  */
 export default BookshelfChanger;

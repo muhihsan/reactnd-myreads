@@ -3,12 +3,16 @@ import PropTypes from 'prop-types';
 import * as Constants from './utils/Constants';
 import Bookshelf from './Bookshelf';
 
+/** Class representing ListBookContent component. */
 class ListBookContent extends Component {
+
+  /**  */
   static propTypes = {
     books: PropTypes.array.isRequired,
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 
+  /**  */
   render = () => {
     const { books, onUpdateBookshelf } = this.props;
     const currentlyReadingBooks = books.filter((book) => book.shelf === Constants.CURRENTLY_READING);
@@ -27,4 +31,5 @@ class ListBookContent extends Component {
   }
 }
 
+/**  */
 export default ListBookContent;

@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Books from './Books';
 
+/** Class representing SearchBooksResults component.  */
 class SearchBooksResults extends Component {
+  /**  */
   static propTypes = {
     books: PropTypes.array.isRequired,
     onUpdateBookshelf: PropTypes.func.isRequired,
     currentSearchValue: PropTypes.string.isRequired
   }
 
+  /**  */
   render = () => {
     const { books, onUpdateBookshelf, currentSearchValue } = this.props;
 
@@ -25,4 +28,5 @@ class SearchBooksResults extends Component {
   }
 }
 
+/**  */
 export default SearchBooksResults;

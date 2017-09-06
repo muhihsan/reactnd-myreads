@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Book from './Book';
 
+/** Class representing Books component. */
 class Books extends Component {
+
+  /**  */
   static propTypes = {
     books: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -13,6 +16,7 @@ class Books extends Component {
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 
+  /**  */
   render = () => {
     const { books, onUpdateBookshelf } = this.props;
 
@@ -24,4 +28,5 @@ class Books extends Component {
   }
 }
 
+/**  */
 export default Books;

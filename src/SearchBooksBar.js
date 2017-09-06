@@ -3,21 +3,31 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as BooksAPI from './utils/BooksAPI';
 
+/** Class representing SearchBooksBar component. */
 class SearchBooksBar extends Component {
+  /**
+   *
+   * @param {*} props - This props value.
+   */
   constructor(props) {
     super (props);
     this.handleChange = this.handleChange.bind(this);
   }
 
+  /**  */
   static propTypes = {
     onSearchBooks: PropTypes.func.isRequired
   }
 
+  /**  */
   state = {
     searchValue: '',
     typingTimeOut: 0
   }
 
+  /**
+   * @param {*} event - This event value.
+   */
   handleChange = (event) => {
     if (this.state.typingTimeOut)
       clearTimeout(this.state.typingTimeOut);
@@ -28,6 +38,7 @@ class SearchBooksBar extends Component {
     });
   }
 
+  /**  */
   searchBooks = () => {
     if (this.state.searchValue.trim() === '') {
       this.props.onSearchBooks([])
@@ -39,6 +50,7 @@ class SearchBooksBar extends Component {
     }
   }
 
+  /**  */
   render() {
     const { searchValue } = this.state;
 
@@ -53,4 +65,5 @@ class SearchBooksBar extends Component {
   }
 }
 
+/**  */
 export default SearchBooksBar;

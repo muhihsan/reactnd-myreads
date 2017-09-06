@@ -3,12 +3,16 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ListBookContent from './ListBookContent';
 
+/** Class representing ListBooks component. */
 class ListBooks extends Component {
+
+  /**  */
   static propTypes = {
     books: PropTypes.array.isRequired,
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 
+  /**  */
   render = () => {
     return (
       <div className="list-books">
@@ -24,4 +28,5 @@ class ListBooks extends Component {
   }
 }
 
+/**  */
 export default ListBooks;
