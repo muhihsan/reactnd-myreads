@@ -21,19 +21,19 @@ class BooksApp extends React.Component {
     books: []
   }
 
-  /** Get all books then set the state value. */
-  getAllBooks = () => {
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books: books });
-    });
-  }
-
   /**
    * After BooksApp component has been mounted.
    * Get all books.
    */
   componentDidMount = () => {
     this.getAllBooks();
+  }
+
+  /** Get all books then set the state value. */
+  getAllBooks = () => {
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books: books });
+    });
   }
 
   /**

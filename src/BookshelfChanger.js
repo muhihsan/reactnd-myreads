@@ -41,6 +41,18 @@ class BookshelfChanger extends Component {
   }
 
   /**
+   * Tell this component that bookshelf has changed.
+   * Run all necessary process when bookshelf is updated.
+   * @param {object} event - The event value.
+   * @param {object} event.target - The target value.
+   * @param {string} event.target.value - The value value.
+  */
+  handleShelfChange = (event) => {
+    this.setState({ isUpdatingShelf: true });
+    this.props.onUpdateBookshelf(this.props.book, event.target.value);
+  }
+
+  /**
    * Tell this component that the bookshelf update has completed.
    * Tell this component that the book is not updating its shelf anymore after certain timeout.
    */
@@ -52,18 +64,6 @@ class BookshelfChanger extends Component {
         isUpdateCompleted: false
       });
     }, 1000);
-  }
-
-  /**
-   * Tell this component that bookshelf has changed.
-   * Run all necessary process when bookshelf is updated.
-   * @param {object} event - The event value.
-   * @param {object} event.target - The target value.
-   * @param {string} event.target.value - The value value.
-  */
-  handleShelfChange = (event) => {
-    this.setState({ isUpdatingShelf: true });
-    this.props.onUpdateBookshelf(this.props.book, event.target.value);
   }
 
   /** Render BookshelfChanger element. */
