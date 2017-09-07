@@ -4,8 +4,7 @@ import BookshelfChanger from './BookshelfChanger'
 
 /** Class representing a Book component. */
 class Book extends Component {
-
-  /**  */
+  /** Typechecking props passed into Book component. */
   static propTypes = {
     book: PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -16,7 +15,7 @@ class Book extends Component {
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 
-  /**  */
+  /** Render Book element. */
   render = () => {
     const { book } = this.props;
 
@@ -35,5 +34,5 @@ class Book extends Component {
   }
 }
 
-/**  */
+/** Export Book component. */
 export default Book;

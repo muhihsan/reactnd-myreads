@@ -4,7 +4,7 @@ import Book from './Book';
 
 /** Class representing Books component. */
 class Books extends Component {
-  /**  */
+  /** Typechecking props passed into Books component. */
   static propTypes = {
     books: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -15,7 +15,7 @@ class Books extends Component {
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 
-  /**  */
+  /** Render Books element. */
   render = () => {
     const { books, onUpdateBookshelf } = this.props;
 
@@ -27,5 +27,5 @@ class Books extends Component {
   }
 }
 
-/**  */
+/** Export Books component. */
 export default Books;

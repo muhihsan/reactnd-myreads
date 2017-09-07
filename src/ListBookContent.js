@@ -5,14 +5,13 @@ import Bookshelf from './Bookshelf';
 
 /** Class representing ListBookContent component. */
 class ListBookContent extends Component {
-
-  /**  */
+  /** Typechecking props passed into ListBookContent component. */
   static propTypes = {
     books: PropTypes.array.isRequired,
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 
-  /**  */
+  /** Render ListBookContent element. */
   render = () => {
     const { books, onUpdateBookshelf } = this.props;
     const currentlyReadingBooks = books.filter((book) => book.shelf === Constants.CURRENTLY_READING);
@@ -31,5 +30,5 @@ class ListBookContent extends Component {
   }
 }
 
-/**  */
+/** Export ListBookContent component. */
 export default ListBookContent;

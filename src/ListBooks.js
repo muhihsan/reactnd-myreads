@@ -5,13 +5,13 @@ import ListBookContent from './ListBookContent';
 
 /** Class representing ListBooks component. */
 class ListBooks extends Component {
-  /**  */
+  /** Typechecking props passed into ListBooks component. */
   static propTypes = {
     books: PropTypes.array.isRequired,
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 
-  /**  */
+  /** Render ListBooks element. */
   render = () => {
     return (
       <div className="list-books">
@@ -27,5 +27,5 @@ class ListBooks extends Component {
   }
 }
 
-/**  */
+/** Export ListBooks component. */
 export default ListBooks;

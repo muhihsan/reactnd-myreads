@@ -6,20 +6,20 @@ import SearchBooksResults from './SearchBooksResults';
 
 /** Class representing SearchBooks comopnent. */
 class SearchBooks extends Component {
-  /**  */
+  /** Typechecking props passed into SearchBooks component. */
   static propTypes = {
     myBooks: PropTypes.array.isRequired,
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 
-  /**  */
+  /** Initialize the state value. */
   state = {
     searchedBooks: [],
     currentSearchValue: ''
   }
 
   /**
-   *
+   * Update the current search book and value results.
    * @param {Object[]} searchedBooks - The searchBooks value.
    * @param {string} currentSearchValue - The currentSearchValue value.
    */
@@ -30,7 +30,7 @@ class SearchBooks extends Component {
     });
   }
 
-  /**  */
+  /** Render SearchBooks element. */
   render = () => {
     const { currentSearchValue, searchedBooks } = this.state;
     const { myBooks, onUpdateBookshelf } = this.props;
@@ -55,5 +55,5 @@ class SearchBooks extends Component {
   }
 }
 
-/**  */
+/** Export SearchBooks component. */
 export default SearchBooks;

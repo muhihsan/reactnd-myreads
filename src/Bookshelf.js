@@ -4,14 +4,14 @@ import BookshelfBooks from './BookshelfBooks';
 
 /** Class representing Bookshelf component. */
 class Bookshelf extends Component {
-  /**  */
+  /** Typechecking props passed into Bookshelf component. */
   static propTypes = {
     title: PropTypes.string.isRequired,
     books: PropTypes.array.isRequired,
     onUpdateBookshelf: PropTypes.func.isRequired
   }
 
-  /**  */
+  /** Render Bookshelf element. */
   render = () => {
     const { title, books, onUpdateBookshelf } = this.props;
 
@@ -24,5 +24,5 @@ class Bookshelf extends Component {
   }
 }
 
-/**  */
+/** Export Bookshelf component. */
 export default Bookshelf;

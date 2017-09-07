@@ -6,7 +6,7 @@ import * as BooksAPI from './utils/BooksAPI';
 /** Class representing SearchBooksBar component. */
 class SearchBooksBar extends Component {
   /**
-   *
+   * Initialize a SearchBooksBar component.
    * @param {object} props - This props value.
    * @param {*} props.onSearchBooks - This onSearchBooks value.
    */
@@ -15,23 +15,25 @@ class SearchBooksBar extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  /**  */
+  /** Typechecking props passed into SearchBooksBar component. */
   static propTypes = {
     onSearchBooks: PropTypes.func.isRequired
   }
 
-  /**  */
+  /** Initialize the state value. */
   state = {
     searchValue: '',
     typingTimeOut: 0
   }
 
   /**
+   * Change the current search value state.
+   * Search the book only when after certain timeout period.
    * @param {object} event - This event value.
    * @param {object} event.target - This target value.
    * @param {string} event.target.value - This value vale.
    */
-  handleChange = (event) => {
+  handleTextChange = (event) => {
     if (this.state.typingTimeOut)
       clearTimeout(this.state.typingTimeOut);
 
@@ -41,7 +43,11 @@ class SearchBooksBar extends Component {
     });
   }
 
-  /**  */
+  /**
+   * Set the current search results to empty books when the search value is empty.
+   * Find books through BooksAPI if the current search value is not empty.
+   * Set the current search results to the result of the BooksAPI call.
+   */
   searchBooks = () => {
     if (this.state.searchValue.trim() === '') {
       this.props.onSearchBooks([])
@@ -53,7 +59,7 @@ class SearchBooksBar extends Component {
     }
   }
 
-  /**  */
+  /** Render SearchBooksBar element. */
   render() {
     const { searchValue } = this.state;
 
@@ -61,12 +67,12 @@ class SearchBooksBar extends Component {
       <div className="search-books-bar">
         <Link className="close-search" to="/">Close</Link>
         <div className="search-books-input-wrapper">
-          <input type="text" value={searchValue} onChange={this.handleChange} placeholder="Search by title or author" />
+          <input type="text" value={searchValue} onChange={this.handleTextChange} placeholder="Search by title or author" />
         </div>
       </div>
     );
   }
 }
 
-/**  */
+/** Export SearchBooksBar component. */
 export default SearchBooksBar;

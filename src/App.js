@@ -8,7 +8,7 @@ import './App.css';
 /** Class representing a BooksApp component. */
 class BooksApp extends React.Component {
   /**
-   * Create a BooksApp component.
+   * Initialize a BooksApp component.
    * @param {object} props - The props value.
    */
   constructor(props) {
@@ -16,27 +16,28 @@ class BooksApp extends React.Component {
     this.updateBookshelf = this.updateBookshelf.bind(this);
   }
 
-  /**
-   * Set the state value.
-   */
+  /** Initialize the state value. */
   state = {
     books: []
   }
 
-  /**  */
+  /** Get all books then set the state value. */
   getAllBooks = () => {
     BooksAPI.getAll().then((books) => {
       this.setState({ books: books });
     });
   }
 
-  /**  */
+  /**
+   * After BooksApp component has been mounted.
+   * Get all books.
+   */
   componentDidMount = () => {
     this.getAllBooks();
   }
 
   /**
-   *
+   * Update a book shelf then get all books.
    * @param {object} book - The book value.
    * @param {string} shelf -  The shelf value.
    */
@@ -46,7 +47,7 @@ class BooksApp extends React.Component {
     );
   }
 
-  /**  */
+  /** Render BooksApp element. */
   render = () => {
     const { books } = this.state;
     return (
@@ -62,5 +63,5 @@ class BooksApp extends React.Component {
   }
 }
 
-/**  */
+/** Export BooksApp component. */
 export default BooksApp;

@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-/**  */
+/** Render ReactDOM  */
 ReactDOM.render(
   <BrowserRouter>
     <App />
@@ -13,5 +13,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-/**  */
 registerServiceWorker();
