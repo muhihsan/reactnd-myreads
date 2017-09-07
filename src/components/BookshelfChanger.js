@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import * as Constants from './utils/Constants';
+import * as Constants from '../utils/Constants';
 
 /** Class representing BookshelfChanger component. */
 class BookshelfChanger extends Component {

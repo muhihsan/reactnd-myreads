@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as QueryString from 'query-string';
-import * as Constants from './utils/Constants';
-import * as BooksAPI from './utils/BooksAPI';
+import * as Constants from '../utils/Constants';
+import * as BooksAPI from '../utils/BooksAPI';
 import SearchBooksBar from './SearchBooksBar';
 import SearchBooksResults from './SearchBooksResults';
 
