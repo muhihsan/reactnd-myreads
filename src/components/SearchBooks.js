@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as QueryString from 'query-string';
-import * as Constants from '../utils/Constants';
+import * as BookGenerator from '../utils/BookGenerator';
 import * as BooksAPI from '../utils/BooksAPI';
 import SearchBooksBar from './SearchBooksBar';
 import SearchBooksResults from './SearchBooksResults';
@@ -116,16 +116,7 @@ class SearchBooks extends Component {
     const { searchedBooks, searchValue, currentSearchValue, isSearchingBooks } = this.state;
     const { myBooks, onUpdateBookshelf } = this.props;
 
-    const books = searchedBooks.map((book) => {
-      const myBook = myBooks.find((myBook) => myBook.id === book.id);
-      return {
-        id: book.id,
-        title: book.title,
-        authors: book.authors,
-        imageLinks: book.imageLinks,
-        shelf: myBook ? myBook.shelf : Constants.NONE
-      }
-    });
+    const books = BookGenerator.getBooks(searchedBooks, myBooks);
 
     return (
       <div className="search-books">
