@@ -83,16 +83,6 @@ class SearchBooks extends Component {
       });
     }
   }
-
-  /**
-   * Update search value query string.
-   * Call search books.
-   */
-  updateQueryStringThenSearchBooks = (searchValue) => {
-    this.updateSearchQueryString();
-    this.searchBooks(searchValue);
-  }
-
   /**
    * Update the current search book and value results.
    * @param {Object[]} searchedBooks - The searchBooks value.
@@ -110,6 +100,15 @@ class SearchBooks extends Component {
     this.props.history.push({
       search: `?q=${this.state.searchValue}`
     });
+  }
+
+  /**
+   * Update search value query string.
+   * Call search books.
+   */
+  updateQueryStringThenSearchBooks = (searchValue) => {
+    this.updateSearchQueryString();
+    this.searchBooks(searchValue);
   }
 
   /** Render SearchBooks element. */
