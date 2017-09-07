@@ -12,7 +12,7 @@ class SearchBooksBar extends Component {
    */
   constructor(props) {
     super (props);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleTextChange = this.handleTextChange.bind(this);
   }
 
   /** Typechecking props passed into SearchBooksBar component. */
@@ -23,7 +23,8 @@ class SearchBooksBar extends Component {
   /** Initialize the state value. */
   state = {
     searchValue: '',
-    typingTimeOut: 0
+    typingTimeOut: 0,
+    isSearchingBooks: false
   }
 
   /**
@@ -53,15 +54,17 @@ class SearchBooksBar extends Component {
       this.props.onSearchBooks([])
     }
     else {
-      BooksAPI.search(this.state.searchValue, 20).then((result) =>
-        this.props.onSearchBooks((result && !result.error) ? result : [], this.state.searchValue)
-      );
+      this.setState({ isSearchingBooks: true });
+      BooksAPI.search(this.state.searchValue, 20).then((result) => {
+        this.props.onSearchBooks((result && !result.error) ? result : [], this.state.searchValue);
+        this.setState({ isSearchingBooks: false });
+      });
     }
   }
 
   /** Render SearchBooksBar element. */
   render() {
-    const { searchValue } = this.state;
+    const { searchValue, isSearchingBooks } = this.state;
 
     return (
       <div className="search-books-bar">
@@ -69,6 +72,9 @@ class SearchBooksBar extends Component {
         <div className="search-books-input-wrapper">
           <input type="text" value={searchValue} onChange={this.handleTextChange} placeholder="Search by title or author" />
         </div>
+        {isSearchingBooks && (
+          <div className="loading-search loading"></div>
+        )}
       </div>
     );
   }

@@ -107,6 +107,14 @@ body, .app {
   font-size: 0;
 }
 
+.loading-search {
+  width: 50px;
+}
+
+.loading-search.loading {
+  background-size: 50px;
+}
+
 .search-books-results {
   padding: 80px 10px 20px;
 }

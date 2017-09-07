@@ -12,7 +12,7 @@ class BookshelfChanger extends Component {
    */
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleShelfChange = this.handleShelfChange.bind(this);
   }
 
   /** Typechecking props passed into BookshelfChanger component. */
