@@ -9,7 +9,8 @@ class SearchBooks extends Component {
   /** Typechecking props passed into SearchBooks component. */
   static propTypes = {
     myBooks: PropTypes.array.isRequired,
-    onUpdateBookshelf: PropTypes.func.isRequired
+    onUpdateBookshelf: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired
   }
 
   /** Initialize the state value. */
@@ -33,7 +34,7 @@ class SearchBooks extends Component {
   /** Render SearchBooks element. */
   render = () => {
     const { currentSearchValue, searchedBooks } = this.state;
-    const { myBooks, onUpdateBookshelf } = this.props;
+    const { myBooks, onUpdateBookshelf, history } = this.props;
 
     const books = searchedBooks.map((book) => {
       const myBook = myBooks.find((myBook) => myBook.id === book.id);
@@ -48,7 +49,7 @@ class SearchBooks extends Component {
 
     return (
       <div className="search-books">
-        <SearchBooksBar onSearchBooks={this.setBooksAndSearchValue} />
+        <SearchBooksBar onSearchBooks={this.setBooksAndSearchValue} history={history} />
         <SearchBooksResults currentSearchValue={currentSearchValue} books={books} onUpdateBookshelf={onUpdateBookshelf} />
       </div>
     );

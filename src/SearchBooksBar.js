@@ -17,7 +17,8 @@ class SearchBooksBar extends Component {
 
   /** Typechecking props passed into SearchBooksBar component. */
   static propTypes = {
-    onSearchBooks: PropTypes.func.isRequired
+    onSearchBooks: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired
   }
 
   /** Initialize the state value. */
@@ -45,11 +46,14 @@ class SearchBooksBar extends Component {
   }
 
   /**
+   * Update search value query string.
    * Set the current search results to empty books when the search value is empty.
    * Find books through BooksAPI if the current search value is not empty.
    * Set the current search results to the result of the BooksAPI call.
    */
   searchBooks = () => {
+    this.updateSearchQueryString();
+
     if (this.state.searchValue.trim() === '') {
       this.props.onSearchBooks([])
     }
@@ -60,6 +64,13 @@ class SearchBooksBar extends Component {
         this.setState({ isSearchingBooks: false });
       });
     }
+  }
+
+  /** Update search value query string with the current value in the state */
+  updateSearchQueryString = () => {
+    this.props.history.push({
+      search: `?q=${this.state.searchValue}`
+    });
   }
 
   /** Render SearchBooksBar element. */
