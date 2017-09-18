@@ -18,7 +18,6 @@ class SearchBooks extends Component {
   /** Initialize the state value. */
   state = {
     searchedBooks: [],
-    searchValue: '',
     currentSearchValue: '',
     typingTimeOut: 0,
     isSearchingBooks: false
@@ -35,7 +34,7 @@ class SearchBooks extends Component {
   /**
    * Get search value from query string.
    * Search for books if the correct query string is found.
-   * Set the searchValue state.
+   * Set the currentSearchValue state.
    */
   initialSearch = () => {
     const search = this.props.history.location.search;
@@ -43,26 +42,18 @@ class SearchBooks extends Component {
       const queryString = QueryString.parse(search);
       const searchValue = queryString.q? queryString.q : '';
       this.searchBooks(searchValue);
-      this.setState({ searchValue: searchValue });
+      this.setState({ currentSearchValue: searchValue });
     }
   }
 
   /**
    * Change the current search value state.
-   * Search the book only when after certain timeout period.
    * @param {object} event - This event value.
    * @param {object} event.target - This target value.
    * @param {string} event.target.value - This value value.
    */
   handleTextChange = (event) => {
-    if (this.state.typingTimeOut)
-      clearTimeout(this.state.typingTimeOut);
-
-    const value = event.target.value;
-    this.setState({
-      searchValue: value,
-      typingTimeOut: setTimeout(() => this.updateQueryStringThenSearchBooks(value), 1500)
-    });
+    this.updateQueryStringThenSearchBooks(event.target.value);
   }
 
   /**
@@ -113,14 +104,14 @@ class SearchBooks extends Component {
 
   /** Render SearchBooks element. */
   render = () => {
-    const { searchedBooks, searchValue, currentSearchValue, isSearchingBooks } = this.state;
+    const { searchedBooks, currentSearchValue, isSearchingBooks } = this.state;
     const { myBooks, onUpdateBookshelf } = this.props;
 
     const books = BookGenerator.getBooks(searchedBooks, myBooks);
 
     return (
       <div className="search-books">
-        <SearchBooksBar searchValue={searchValue} isSearchingBooks={isSearchingBooks} onTypingSearchValue={this.handleTextChange} />
+        <SearchBooksBar searchValue={currentSearchValue} isSearchingBooks={isSearchingBooks} onTypingSearchValue={this.handleTextChange} />
         <SearchBooksResults currentSearchValue={currentSearchValue} books={books} onUpdateBookshelf={onUpdateBookshelf} />
       </div>
     );
