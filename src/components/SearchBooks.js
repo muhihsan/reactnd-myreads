@@ -47,13 +47,16 @@ class SearchBooks extends Component {
   }
 
   /**
-   * Change the current search value state.
+   * Update search value query string.
+   * Call search books.
    * @param {object} event - This event value.
    * @param {object} event.target - This target value.
    * @param {string} event.target.value - This value value.
    */
   handleTextChange = (event) => {
-    this.updateQueryStringThenSearchBooks(event.target.value);
+    const searchValue = event.target.value;
+    this.updateSearchQueryString(searchValue);
+    this.searchBooks(searchValue);
   }
 
   /**
@@ -91,15 +94,6 @@ class SearchBooks extends Component {
     this.props.history.push({
       search: `?q=${searchValue}`
     });
-  }
-
-  /**
-   * Update search value query string.
-   * Call search books.
-   */
-  updateQueryStringThenSearchBooks = (searchValue) => {
-    this.updateSearchQueryString(searchValue);
-    this.searchBooks(searchValue);
   }
 
   /** Render SearchBooks element. */
