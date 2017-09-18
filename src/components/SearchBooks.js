@@ -40,7 +40,10 @@ class SearchBooks extends Component {
     if (search) {
       const queryString = QueryString.parse(search);
       const searchValue = queryString.q ? queryString.q : '';
-      this.setState({ currentSearchValue: searchValue });
+      this.setState({
+        currentSearchValue: searchValue,
+        isSearchingBooks: true
+      });
     }
   }
 
@@ -104,7 +107,7 @@ class SearchBooks extends Component {
     return (
       <div className="search-books">
         <SearchBooksBar searchValue={currentSearchValue} isSearchingBooks={isSearchingBooks} onTypingSearchValue={this.handleTextChange} />
-        <SearchBooksResults currentSearchValue={currentSearchValue} books={books} onUpdateBookshelf={onUpdateBookshelf} />
+        <SearchBooksResults currentSearchValue={currentSearchValue} isSearchingBooks={isSearchingBooks} books={books} onUpdateBookshelf={onUpdateBookshelf} />
       </div>
     );
   }

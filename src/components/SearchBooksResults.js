@@ -7,20 +7,25 @@ class SearchBooksResults extends Component {
   /** Typechecking props passed into SearchBooksResults component. */
   static propTypes = {
     books: PropTypes.array.isRequired,
+    isSearchingBooks: PropTypes.bool.isRequired,
     onUpdateBookshelf: PropTypes.func.isRequired,
     currentSearchValue: PropTypes.string.isRequired
   }
 
   /** Render SearchBooksResults element. */
   render = () => {
-    const { books, onUpdateBookshelf, currentSearchValue } = this.props;
+    const { books, isSearchingBooks, onUpdateBookshelf, currentSearchValue } = this.props;
+    const bookExists = books && books.length > 0;
 
     return (
       <div className="search-books-results">
-        {books && books.length > 0 && (
+        {bookExists && (
           <Books books={books} onUpdateBookshelf={onUpdateBookshelf} />
         )}
-        {currentSearchValue !== '' && books && books.length === 0 && (
+        {isSearchingBooks && !bookExists && (
+          <div className="center">Searching books with title or author <span className="highlight">{currentSearchValue}</span></div>
+        )}
+        {!isSearchingBooks && currentSearchValue !== '' && !bookExists && (
           <div className="center">No books found with title or author <span className="highlight">{currentSearchValue}</span></div>
         )}
       </div>
