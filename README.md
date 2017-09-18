@@ -1,4 +1,4 @@
-# My Reads
+# My Reads: A Book Lending App
 
 My first project in React Nanodegree Program.
 
