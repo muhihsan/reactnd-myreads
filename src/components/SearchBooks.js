@@ -77,6 +77,7 @@ class SearchBooks extends Component {
       });
     }
   }
+
   /**
    * Update the current search book and value results.
    * @param {Object[]} searchedBooks - The searchBooks value.
