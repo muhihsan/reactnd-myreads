@@ -28,20 +28,18 @@ class SearchBooks extends Component {
    * Do initial search.
    */
   componentDidMount = () => {
-    this.initialSearch();
+    this.searchBooks(this.state.currentSearchValue);
   }
 
   /**
-   * Get search value from query string.
-   * Search for books if the correct query string is found.
-   * Set the currentSearchValue state.
+   * Before BooksApp component will be mounted.
+   * Set the current search value according to the query string.
    */
-  initialSearch = () => {
+  componentWillMount = () => {
     const search = this.props.history.location.search;
     if (search) {
       const queryString = QueryString.parse(search);
-      const searchValue = queryString.q? queryString.q : '';
-      this.searchBooks(searchValue);
+      const searchValue = queryString.q ? queryString.q : '';
       this.setState({ currentSearchValue: searchValue });
     }
   }
@@ -55,6 +53,7 @@ class SearchBooks extends Component {
    */
   handleTextChange = (event) => {
     const searchValue = event.target.value;
+    this.setState({ currentSearchValue: searchValue });
     this.updateSearchQueryString(searchValue);
     this.searchBooks(searchValue);
   }
@@ -67,12 +66,12 @@ class SearchBooks extends Component {
    */
   searchBooks = (searchValue) => {
     if (searchValue.trim() === '') {
-      this.setBooksAndCurrentSearchValue([])
+      this.setBooks([])
     }
     else {
       this.setState({ isSearchingBooks: true });
       BooksAPI.search(searchValue, 20).then((result) => {
-        this.setBooksAndCurrentSearchValue((result && !result.error) ? result : [], searchValue);
+        this.setBooks((result && !result.error) ? result : []);
         this.setState({ isSearchingBooks: false });
       });
     }
@@ -81,12 +80,10 @@ class SearchBooks extends Component {
   /**
    * Update the current search book and value results.
    * @param {Object[]} searchedBooks - The searchBooks value.
-   * @param {string} currentSearchValue - The currentSearchValue value.
    */
-  setBooksAndCurrentSearchValue = (searchedBooks, currentSearchValue = '') => {
+  setBooks = (searchedBooks) => {
     this.setState({
-      searchedBooks: searchedBooks,
-      currentSearchValue: currentSearchValue
+      searchedBooks: searchedBooks
     });
   }
 
