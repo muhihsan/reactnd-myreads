@@ -96,9 +96,9 @@ class SearchBooks extends Component {
   }
 
   /** Update search value query string with the current value in the state */
-  updateSearchQueryString = () => {
+  updateSearchQueryString = (searchValue) => {
     this.props.history.push({
-      search: `?q=${this.state.searchValue}`
+      search: `?q=${searchValue}`
     });
   }
 
@@ -107,7 +107,7 @@ class SearchBooks extends Component {
    * Call search books.
    */
   updateQueryStringThenSearchBooks = (searchValue) => {
-    this.updateSearchQueryString();
+    this.updateSearchQueryString(searchValue);
     this.searchBooks(searchValue);
   }
 
