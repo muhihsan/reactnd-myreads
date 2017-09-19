@@ -7,7 +7,8 @@ class BookshelfBooks extends Component {
   /** Typechecking props passed into BookshelfBooks component. */
   static propTypes = {
     books: PropTypes.array.isRequired,
-    onUpdateBookshelf: PropTypes.func.isRequired
+    onUpdateBookshelf: PropTypes.func.isRequired,
+    lastUpdatedBook: PropTypes.object
   }
 
   /** Render BookshelfBooks element. */

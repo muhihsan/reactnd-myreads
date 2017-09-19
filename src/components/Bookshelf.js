@@ -8,17 +8,18 @@ class Bookshelf extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
     books: PropTypes.array.isRequired,
-    onUpdateBookshelf: PropTypes.func.isRequired
+    onUpdateBookshelf: PropTypes.func.isRequired,
+    lastUpdatedBook: PropTypes.object
   }
 
   /** Render Bookshelf element. */
   render = () => {
-    const { title, books, onUpdateBookshelf } = this.props;
+    const { title, books, onUpdateBookshelf, lastUpdatedBook } = this.props;
 
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{title}</h2>
-        <BookshelfBooks books={books} onUpdateBookshelf={onUpdateBookshelf}  />
+        <BookshelfBooks books={books} onUpdateBookshelf={onUpdateBookshelf} lastUpdatedBook={lastUpdatedBook}  />
       </div>
     );
   }

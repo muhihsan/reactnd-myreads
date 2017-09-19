@@ -12,7 +12,8 @@ class SearchBooks extends Component {
   static propTypes = {
     myBooks: PropTypes.array.isRequired,
     onUpdateBookshelf: PropTypes.func.isRequired,
-    history: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired,
+    lastUpdatedBook: PropTypes.object
   }
 
   /** Initialize the state value. */
@@ -100,14 +101,14 @@ class SearchBooks extends Component {
   /** Render SearchBooks element. */
   render = () => {
     const { searchedBooks, currentSearchValue, isSearchingBooks } = this.state;
-    const { myBooks, onUpdateBookshelf } = this.props;
+    const { myBooks, onUpdateBookshelf, lastUpdatedBook } = this.props;
 
     const books = BookGenerator.getBooks(searchedBooks, myBooks);
 
     return (
       <div className="search-books">
         <SearchBooksBar searchValue={currentSearchValue} isSearchingBooks={isSearchingBooks} onTypingSearchValue={this.handleTextChange} />
-        <SearchBooksResults currentSearchValue={currentSearchValue} isSearchingBooks={isSearchingBooks} books={books} onUpdateBookshelf={onUpdateBookshelf} />
+        <SearchBooksResults currentSearchValue={currentSearchValue} isSearchingBooks={isSearchingBooks} books={books} onUpdateBookshelf={onUpdateBookshelf} lastUpdatedBook={lastUpdatedBook} />
       </div>
     );
   }

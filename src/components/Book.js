@@ -12,19 +12,21 @@ class Book extends Component {
       authors: PropTypes.array,
       imageLinks: PropTypes.object
     }).isRequired,
-    onUpdateBookshelf: PropTypes.func.isRequired
+    onUpdateBookshelf: PropTypes.func.isRequired,
+    lastUpdatedBook: PropTypes.object
   }
 
   /** Render Book element. */
   render = () => {
-    const { book } = this.props;
+    const { book, lastUpdatedBook } = this.props;
+    const isUpdateCompleted = lastUpdatedBook !== null && lastUpdatedBook.id === book.id;
 
     return (
       <li>
         <div className="book">
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks && book.imageLinks.thumbnail}")` }}></div>
-            <BookshelfChanger {...(this.props)} />
+            <BookshelfChanger {...(this.props)} isUpdateCompleted={isUpdateCompleted} />
           </div>
           <div className="book-title">{book.title}</div>
           <div className="book-authors">{book.authors ? book.authors.join(', ') : 'Unknown'}</div>

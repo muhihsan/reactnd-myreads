@@ -18,7 +18,8 @@ class BooksApp extends React.Component {
 
   /** Initialize the state value. */
   state = {
-    books: []
+    books: [],
+    lastUpdatedBook: null
   }
 
   /**
@@ -29,34 +30,40 @@ class BooksApp extends React.Component {
     this.getAllBooks();
   }
 
-  /** Get all books then set the state value. */
+  /**
+   * Get all books then set the state value after certain timeout.
+   * The timeout is used to show update has completed before the book shifted to the new bookshelf.
+   */
   getAllBooks = () => {
     BooksAPI.getAll().then((books) => {
-      this.setState({ books: books });
+      setTimeout(() => {
+        this.setState({ books: books });
+      }, 1000);
     });
   }
 
   /**
-   * Update a book shelf then get all books.
+   * Update a book shelf then update the last updated book and get all books.
    * @param {object} book - The book value.
    * @param {string} shelf -  The shelf value.
    */
   updateBookshelf = (book, shelf) => {
-    BooksAPI.update(book, shelf).then(() =>
-      this.getAllBooks()
-    );
+    BooksAPI.update(book, shelf).then(() => {
+      this.setState({ lastUpdatedBook: book });
+      this.getAllBooks();
+    });
   }
 
   /** Render BooksApp element. */
   render = () => {
-    const { books } = this.state;
+    const { books, lastUpdatedBook } = this.state;
     return (
       <div className="app">
         <Route exact path="/" render={() =>
-          <ListBooks {...(this.state)} onUpdateBookshelf={this.updateBookshelf} />
+          <ListBooks {...(this.state)} onUpdateBookshelf={this.updateBookshelf} lastUpdatedBook={lastUpdatedBook} />
         } />
         <Route path="/search" render={(props) =>
-          <SearchBooks myBooks={books} history={props.history} onUpdateBookshelf={this.updateBookshelf} />
+          <SearchBooks myBooks={books} history={props.history} onUpdateBookshelf={this.updateBookshelf} lastUpdatedBook={lastUpdatedBook} />
         } />
       </div>
     );

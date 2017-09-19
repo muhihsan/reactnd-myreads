@@ -12,16 +12,17 @@ class Books extends Component {
       authors: PropTypes.array,
       imageLinks: PropTypes.object
     })).isRequired,
-    onUpdateBookshelf: PropTypes.func.isRequired
+    onUpdateBookshelf: PropTypes.func.isRequired,
+    lastUpdatedBook: PropTypes.object
   }
 
   /** Render Books element. */
   render = () => {
-    const { books, onUpdateBookshelf } = this.props;
+    const { books, onUpdateBookshelf, lastUpdatedBook } = this.props;
 
     return (
       <ol className="books-grid">
-        {books && books.map((book) => book && <Book key={book.id} book={book} onUpdateBookshelf={onUpdateBookshelf} />)}
+        {books && books.map((book) => book && <Book key={book.id} book={book} onUpdateBookshelf={onUpdateBookshelf} lastUpdatedBook={lastUpdatedBook} />)}
       </ol>
     );
   }

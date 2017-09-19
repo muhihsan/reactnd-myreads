@@ -9,18 +9,19 @@ class SearchBooksResults extends Component {
     books: PropTypes.array.isRequired,
     isSearchingBooks: PropTypes.bool.isRequired,
     onUpdateBookshelf: PropTypes.func.isRequired,
-    currentSearchValue: PropTypes.string.isRequired
+    currentSearchValue: PropTypes.string.isRequired,
+    lastUpdatedBook: PropTypes.object
   }
 
   /** Render SearchBooksResults element. */
   render = () => {
-    const { books, isSearchingBooks, onUpdateBookshelf, currentSearchValue } = this.props;
+    const { books, isSearchingBooks, onUpdateBookshelf, currentSearchValue, lastUpdatedBook } = this.props;
     const bookExists = books && books.length > 0;
 
     return (
       <div className="search-books-results">
         {bookExists && (
-          <Books books={books} onUpdateBookshelf={onUpdateBookshelf} />
+          <Books books={books} onUpdateBookshelf={onUpdateBookshelf} lastUpdatedBook={lastUpdatedBook} />
         )}
         {isSearchingBooks && !bookExists && (
           <div className="center">Searching books with title or author <span className="highlight">{currentSearchValue}</span></div>

@@ -18,7 +18,8 @@ class BookshelfChanger extends Component {
   /** Typechecking props passed into BookshelfChanger component. */
   static propTypes = {
     book: PropTypes.object.isRequired,
-    onUpdateBookshelf: PropTypes.func.isRequired
+    onUpdateBookshelf: PropTypes.func.isRequired,
+    isUpdateCompleted: PropTypes.bool.isRequired
   }
 
   /** Initialize the state value. */
@@ -29,14 +30,22 @@ class BookshelfChanger extends Component {
 
   /**
    * Before BookshelfChanger component receive new props.
-   * Update current status if bookshelf of this component has changed.
+   * Set isUpdateCompleted to true once a bookshelf update is completed.
+   * Set isUpdatingShelf and isUpdateCompleted once this component receive a new book object that has different shelf.
    * @param {object} nextProps - The nextProps value.
    * @param {object} nextProps.book - The book value.
    * @param {*} nextProps.onUpdateBookshelf - The onUpdateBookshelf function.
    */
   componentWillReceiveProps = (nextProps) => {
+    if (nextProps.isUpdateCompleted) {
+      this.setState({ isUpdateCompleted: true });
+    }
+
     if (nextProps.book.shelf && (nextProps.book.shelf !== this.props.book.shelf)) {
-      this.updateCurrentStatus();
+      this.setState({
+        isUpdatingShelf: false,
+        isUpdateCompleted: false
+      });
     }
   }
 
@@ -50,20 +59,6 @@ class BookshelfChanger extends Component {
   handleShelfChange = (event) => {
     this.setState({ isUpdatingShelf: true });
     this.props.onUpdateBookshelf(this.props.book, event.target.value);
-  }
-
-  /**
-   * Tell this component that the bookshelf update has completed.
-   * Tell this component that the book is not updating its shelf anymore after certain timeout.
-   */
-  updateCurrentStatus = () => {
-    this.setState({ isUpdateCompleted: true });
-    setTimeout(() => {
-      this.setState({
-        isUpdatingShelf: false,
-        isUpdateCompleted: false
-      });
-    }, 1000);
   }
 
   /** Render BookshelfChanger element. */

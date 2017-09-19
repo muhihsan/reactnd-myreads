@@ -8,7 +8,8 @@ class ListBooks extends Component {
   /** Typechecking props passed into ListBooks component. */
   static propTypes = {
     books: PropTypes.array.isRequired,
-    onUpdateBookshelf: PropTypes.func.isRequired
+    onUpdateBookshelf: PropTypes.func.isRequired,
+    lastUpdatedBook: PropTypes.object
   }
 
   /** Render ListBooks element. */
